@@ -38,7 +38,7 @@ module.exports = function(document, getFtpSync, skipOnSaveCheck) {
 	if(isIgnored(config.ignore, document.uri.fsPath)) return;
 	
 	var fileName = path.basename(document.uri.fsPath);
-	var uploadingStatus = vscode.window.setStatusBarMessage("Ftp-sync: Uploading " + fileName + " to FTP server...");
+	var uploadingStatus = vscode.window.setStatusBarMessage("Ftp-sync: Uploading " + fileName + " to FTP server...", 10000);
 
 	getFtpSync().uploadFile(document.uri.fsPath, vscode.workspace.rootPath, function(err) {
 		uploadingStatus.dispose();
